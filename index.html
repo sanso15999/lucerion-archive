@@ -5,28 +5,42 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>LUCERION｜白庭檔案</title>
+<meta name="theme-color" content="#f7f6f2"/>
+<meta name="description" content="Lucerion Foundation｜路瑟里昂基金會。使一切脆弱之物，得以被安放。"/>
 <style>
 :root {
-  color-scheme: light dark;
-  --site-primary: #d9dcde;
-  --site-secondary: #f0f1f1;
-  --site-background: #f8f8f7;
-  --site-on-primary: #242729;
-  --site-on-secondary: #414649;
-  --site-on-background: #282c2e;
+  color-scheme: light;
+  --site-primary: #d0c7b5;
+  --site-secondary: #eeece6;
+  --site-background: #f8f7f3;
+  --site-on-primary: #252625;
+  --site-on-secondary: #383936;
+  --site-on-background: #292a27;
   --site-font-body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
   --site-font-heading: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
   --site-heading-scale: 1;
   --site-spacing-scale: 1;
   --site-radius-scale: 1;
   --site-decoration-opacity: 1;
-  --ink: light-dark(#282c2e, #e6e8e8);
-  --muted: light-dark(#777e81, #a3abad);
-  --line: light-dark(#d8dcdd, #424749);
-  --panel: light-dark(#ffffff, #242829);
-  --panel-soft: light-dark(#f1f3f3, #2c3133);
-  --accent: light-dark(#8d999c, #aeb9bb);
+  --ink: #252622;
+  --muted: #555750;
+  --line: #d0cbc0;
+  --panel: #fffefa;
+  --panel-soft: #eeece5;
+  --accent: #927747;
 }
+/* Visual direction: warm grey, ivory and restrained gold. Equilateral triangles are the site-wide compositional anchor; the Tree of Life is a recurring ornamental motif, neither is a foundation logo. */
+.hero-art::before { content:""; position:absolute; width:min(31vw,330px); aspect-ratio:1; border:1px solid color-mix(in srgb, var(--accent) 68%, transparent); clip-path:polygon(50% 0%, 100% 86.6%, 0% 86.6%); pointer-events:none; opacity:.48; }
+.foundation-mark svg { color:var(--accent); }
+/* Triangular geometry repeats as a framing device throughout the archive, never as a corporate mark. */
+.panel { position:relative; }
+.panel::after { content:""; position:absolute; top:14px; right:14px; width:18px; height:16px; border:1px solid color-mix(in srgb, var(--accent) 55%, transparent); clip-path:polygon(50% 0,100% 100%,0 100%); opacity:.55; pointer-events:none; }
+.foundation-intro::after { width:24px; height:21px; top:18px; right:18px; opacity:.7; }
+.foundation-mark-caption { color:var(--muted); }
+.panel p, .foundation-copy p:not(.foundation-cn), .lead { color:#4d4f49; }
+.nav button { color:#62645f; }
+.nav button[aria-current="page"] { color:#292a27; }
+button:focus-visible, a:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
 * { box-sizing: border-box; }
 html, body { margin: 0; min-height: 100%; background: var(--site-background); color: var(--ink); font-family: var(--site-font-body); }
 body { min-height: 100vh; }
@@ -37,9 +51,9 @@ button { font: inherit; color: inherit; }
 #app::after { width: 250px; height: 250px; left: -155px; bottom: -125px; border: 1px solid var(--line); transform: rotate(45deg); }
 .topbar { display:flex; align-items:center; justify-content:space-between; gap:20px; padding: 20px clamp(20px, 5vw, 72px); border-bottom:1px solid var(--line); background: color-mix(in srgb, var(--site-background) 90%, transparent); }
 .brand { display:flex; align-items:center; gap:13px; min-width:0; }
-.sig { width:31px; height:31px; flex:0 0 31px; position:relative; border:1px solid var(--muted); border-radius:50%; display:grid; place-items:center; }
-.sig::before { content:""; width:13px; height:13px; border:1px solid var(--muted); transform:rotate(45deg); }
-.sig::after { content:""; position:absolute; width:5px; height:5px; border-radius:50%; background:var(--muted); }
+.sig { display:none; }
+.sig::before { display:none; }
+.sig::after { display:none; }
 .brandname { font-size:12px; letter-spacing:.24em; font-weight:600; white-space:nowrap; }
 .brandmeta { color:var(--muted); font-size:9px; letter-spacing:.15em; margin-top:4px; }
 .topright { display:flex; align-items:center; gap:14px; color:var(--muted); font-size:10px; letter-spacing:.15em; }
@@ -146,6 +160,16 @@ h3 { font-size:calc(20px * var(--site-heading-scale)); line-height:1.6; margin-b
 .page-controls button:disabled { opacity:.35; cursor:not-allowed; }
 .page-count { min-width:48px; text-align:center; }
 .mobile-nav { display:none; }
+
+.foundation-intro { display:grid; grid-template-columns:minmax(190px,.72fr) minmax(0,1.28fr); gap:clamp(18px,4vw,42px); align-items:center; margin:28px 0 8px; }
+.foundation-mark { display:flex; flex-direction:column; align-items:center; justify-content:center; min-width:0; color:var(--muted); }
+.foundation-mark svg { display:block; width:min(100%,260px); height:auto; max-height:230px; }
+.foundation-mark-caption { margin-top:10px; text-align:center; font-size:8px; letter-spacing:.16em; color:var(--muted); }
+.foundation-copy h3 { font-size:clamp(22px,2.5vw,30px); margin-bottom:2px; }
+.foundation-cn { color:var(--muted); font-size:11px; letter-spacing:.18em; margin-bottom:14px; }
+.foundation-copy p:not(.foundation-cn) { font-size:12px; line-height:2.05; color:var(--muted); }
+.foundation-note { border-top:1px solid var(--line); padding-top:12px; font-family:var(--site-font-heading); letter-spacing:.05em; color:var(--ink) !important; }
+
 @media (max-width: 800px) {
   .shell { grid-template-columns:1fr; }
   .sidebar { border-right:0; border-bottom:1px solid var(--line); padding:12px 18px; display:block; }
@@ -219,7 +243,8 @@ h3 { font-size:calc(20px * var(--site-heading-scale)); line-height:1.6; margin-b
   .page-controls button:last-child { text-align:center; }
   .page-count { align-self:center; }
   .rule { margin:22px 0; }
-  .org-grid, .two-col, .garden-layout { grid-template-columns:minmax(0,1fr); }
+  .org-grid, .two-col, .garden-layout, .foundation-intro { grid-template-columns:minmax(0,1fr); }
+  .foundation-mark svg { width:min(72vw,230px); }
   .org-card { min-width:0; }
   .structure-branches { grid-template-columns:1fr; }
   .subnodes { grid-template-columns:1fr; }
@@ -240,12 +265,75 @@ h3 { font-size:calc(20px * var(--site-heading-scale)); line-height:1.6; margin-b
   .nav-label { font-size:10px; }
 }
 
+
+/* V6: triangle-led editorial redesign + high-contrast typography */
+:root {
+  --site-primary:#d8c49a; --site-secondary:#e8e5de; --site-background:#f7f7f4;
+  --site-on-primary:#20211f; --site-on-secondary:#252623; --site-on-background:#20211f;
+  --ink:#20211f; --muted:#454741; --line:#c8c5bc; --panel:#ffffff; --panel-soft:#efeee9; --accent:#80612b;
+}
+html, body, #app { background:#f7f7f4; color:#20211f; }
+body, p, li, .lead, .panel p, .detail-box p, .foundation-copy p, .org-card p,
+.sidebar-quote, .foundation-mark-caption, .brandmeta, .topright, .side-kicker,
+.section-code, .eyebrow, .nav button, .tabs-foot, .page-controls button {
+  color:#292a26;
+}
+p, .lead, .panel p, .detail-box p, .foundation-copy p { line-height:1.9; }
+h1,h2,h3,h4,.brandname,.nav-label,.org-card .cn { color:#191a18; }
+.eyebrow,.side-kicker,.section-code,.panel-index,.org-card .en,.sidebar-code,
+.brandmeta,.foundation-mark-caption { color:#56564f; }
+.accent,.foundation-note,.sidebar-quote { color:#705321; }
+.topbar { background:#f7f7f4; border-bottom:1px solid #c8c5bc; }
+.nav button { color:#373832; border-color:transparent; }
+.nav button[aria-current="page"] { background:#fff; border-color:#b9b2a2; box-shadow:inset 3px 0 0 #80612b; }
+.panel,.detail-box,.org-card,.foundation-intro { border-color:#c8c5bc; }
+.panel { background:#fff; }
+.panel.soft,.soft { background:#efeee9; }
+.panel::after { width:34px; height:30px; top:14px; right:14px; border-color:#a58a55; opacity:.85; }
+/* Triangle becomes the recurring layout grammar: frames, dividers, section markers and cards. */
+#app::before { width: min(82vw, 900px); height:min(82vw,900px); min-width:0; min-height:0; top:-34vw; right:-22vw; border:1px solid #b6a27b; border-radius:0; transform:rotate(0deg); clip-path:polygon(50% 0,100% 86.6%,0 86.6%); box-shadow:none; opacity:.28; }
+#app::after { width:220px; height:190px; left:-115px; bottom:-95px; border:1px solid #b6a27b; transform:none; clip-path:polygon(50% 0,100% 100%,0 100%); opacity:.5; }
+.sig { border:0; border-radius:0; width:32px; height:32px; }
+.sig::before { width:24px; height:22px; transform:none; clip-path:polygon(50% 0,100% 100%,0 100%); border:0; background:#80612b; }
+.sig::after { display:none; }
+.mini-seal { border:0; border-radius:0; width:62px; height:62px; }
+.mini-seal::before { width:54px; height:48px; transform:none; clip-path:polygon(50% 0,100% 100%,0 100%); border:1px solid #80612b; }
+.mini-seal::after { width:5px; height:5px; border-radius:0; background:#80612b; top:28px; }
+.hero-art { position:relative; }
+/* V6: soften the central diamond from black to architectural grey */
+.core-glyph { background:#b8b9b5; border-color:#777973; }
+.core-glyph::before { border-color:#777973; }
+.core-glyph::after { background:#b8b9b5; }
+.hero-art::before { content:""; position:absolute; width:min(65vw,440px); aspect-ratio:1; border:1px solid #80612b; clip-path:polygon(50% 0,100% 86.6%,0 86.6%); opacity:.72; pointer-events:none; }
+.hero-art::after { content:""; position:absolute; width:min(52vw,350px); aspect-ratio:1; border:1px solid #b6a27b; clip-path:polygon(50% 0,100% 86.6%,0 86.6%); transform:rotate(180deg); opacity:.7; pointer-events:none; }
+.foundation-mark { position:relative; }
+.foundation-mark::before { content:""; position:absolute; inset:-10px 5% 18px; border:1px solid #b6a27b; clip-path:polygon(50% 0,100% 100%,0 100%); pointer-events:none; }
+.foundation-mark svg { color:#705321; }
+.foundation-mark-caption { font-size:10px; letter-spacing:.12em; font-weight:600; }
+.section-head { position:relative; padding:0 0 22px; border-bottom:1px solid #c8c5bc; }
+.section-head::after { content:""; position:absolute; width:20px; height:18px; right:0; bottom:-9px; background:#f7f7f4; border:1px solid #80612b; clip-path:polygon(50% 0,100% 100%,0 100%); }
+.org-card { background:#fff; position:relative; border-top:2px solid #80612b; }
+.org-card::before { content:""; display:block; width:30px; height:26px; margin:0 auto 12px; border:1px solid #80612b; clip-path:polygon(50% 0,100% 100%,0 100%); }
+.org-symbol { display:none; }
+.rule { position:relative; border-color:#c8c5bc; }
+.rule::after { content:""; position:absolute; left:calc(50% - 7px); top:-6px; width:14px; height:12px; border:1px solid #80612b; clip-path:polygon(50% 0,100% 100%,0 100%); background:#f7f7f4; }
+button:focus-visible,a:focus-visible { outline:3px solid #705321; outline-offset:3px; }
+@media(max-width:760px) {
+  #app::before { width:115vw; height:115vw; top:-42vw; right:-42vw; }
+  .hero-art::before { width:min(78vw,330px); }
+  .hero-art::after { width:min(62vw,265px); }
+  .foundation-intro { gap:24px; }
+  .foundation-mark { max-width:290px; margin-inline:auto; }
+  .nav { scrollbar-width:thin; }
+  .nav button { min-height:44px; }
+}
+
 </style>
 </head>
 <body>
 <div id="app">
 <header class="topbar">
-<div class="brand"><div aria-hidden="true" class="sig"></div><div><div class="brandname">LUCERION</div><div class="brandmeta">THE INCOMPLETE FLESH · 白庭檔案</div></div></div>
+<div class="brand"><div><div class="brandname">LUCERION</div><div class="brandmeta">THE INCOMPLETE FLESH · 白庭檔案</div></div></div>
 <div class="topright"><span><i class="statusdot"></i>ARCHIVE OPEN</span><span>卷宗 01 / 11</span></div>
 </header>
 <div class="shell">
@@ -254,8 +342,7 @@ h3 { font-size:calc(20px * var(--site-heading-scale)); line-height:1.6; margin-b
 <nav aria-label="世界觀分頁" class="nav">
 <button aria-current="page" data-page="0"><span class="nav-num">00</span><span class="nav-label">序章・未完成之物</span><span class="nav-arrow">↗</span></button>
 <button data-page="1"><span class="nav-num">01</span><span class="nav-label">創造信條</span><span class="nav-arrow">↗</span></button>
-<button data-page="2"><span class="nav-num">02</span><span class="nav-label">三重架構
-</span><span class="nav-arrow">↗</span></button>
+<button data-page="2"><span class="nav-num">02</span><span class="nav-label">三大架構</span><span class="nav-arrow">↗</span></button>
 <button data-page="3"><span class="nav-num">03</span><span class="nav-label">組織脈絡</span><span class="nav-arrow">↗</span></button>
 <button data-page="4"><span class="nav-num">04</span><span class="nav-label">E.D.E.N</span><span class="nav-arrow">↗</span></button>
 <button data-page="5"><span class="nav-num">05</span><span class="nav-label">白庭・內域</span><span class="nav-arrow">↗</span></button>
@@ -265,7 +352,7 @@ h3 { font-size:calc(20px * var(--site-heading-scale)); line-height:1.6; margin-b
 
 
 </nav>
-<div class="sidebar-bottom"><div aria-hidden="true" class="mini-seal"></div><div class="sidebar-quote">「被創造之物，<br/>亦可參與創造。」</div><div class="sidebar-code">L.F. / INTERNAL COSMOLOGY</div></div>
+<div class="sidebar-bottom"><div class="sidebar-quote">「被創造之物，<br/>亦可參與創造。」</div><div class="sidebar-code">L.F. / INTERNAL COSMOLOGY</div></div>
 </aside>
 <main id="pages">
 <section class="page active" data-title="序章・未完成之物">
@@ -281,7 +368,10 @@ h3 { font-size:calc(20px * var(--site-heading-scale)); line-height:1.6; margin-b
 </div>
 <div aria-label="抽象生命環形聖徽" class="hero-art"><div class="orbit"><span class="orbit-label top">VITA / CONTINUUM</span><span class="orbit-label bottom">FORM IS NOT FINAL</span></div><div class="core-glyph"></div></div>
 </div>
-<div class="hero-foot"><div>FOUNDATION ARCHIVE<strong>生命重構體系・總覽</strong></div><div>ACCESS LEVEL<strong>觀測者 / 00</strong></div><div>FILE STATUS<strong>已開啟・未定稿</strong></div></div>
+<section class="foundation-intro panel soft" aria-labelledby="foundation-title">
+<div class="foundation-copy"><div class="eyebrow">INSTITUTIONAL PROFILE / L.F.</div><h3 id="foundation-title">Lucerion Foundation</h3><p class="foundation-cn">路瑟里昂基金會</p><p>路瑟里昂基金會是一個以生命保存、身心照護與生命重構為核心的跨領域機構。對外，它提供醫療、復健、長期照護與生命科學研究；對內，它持續追問一個更深的問題：當生命仍能被理解與改寫，人類所謂的「完整」究竟由誰定義？</p><p>基金會以三大架構協作：保存之環維持生命與形體的連續，安放之環承接記憶、情緒與創傷，重構之環探索生命模組的可塑性。三者不是單向階級，而是彼此牽引、相互校正的系統。</p><p class="foundation-note">基金會信條：使一切脆弱之物，得以被安放。</p></div>
+</section>
+<div class="hero-foot"><div>FOUNDATION ARCHIVE<strong>使一切脆弱之物，得以被安放。</strong></div><div>ACCESS LEVEL<strong>觀測者 / 00</strong></div><div>FILE STATUS<strong>已開啟・未定稿</strong></div></div>
 <div class="tabs-foot"><span>請使用左側索引切換卷宗</span><div class="page-controls"><button data-prev="" disabled="">← 上一頁</button><span class="page-count">01 / 07</span><button data-next="">下一頁 →</button></div></div>
 </section>
 <section class="page" data-title="創造信條">
@@ -296,8 +386,8 @@ h3 { font-size:calc(20px * var(--site-heading-scale)); line-height:1.6; margin-b
 </div>
 <div class="tabs-foot"><span>THEOLOGY / BIOLOGY / CONTINUITY</span><div class="page-controls"><button data-prev="">← 上一頁</button><span class="page-count">02 / 07</span><button data-next="">下一頁 →</button></div></div>
 </section>
-<section class="page" data-title="三重架構">
-<div class="section-head"><div><div class="eyebrow">02 / THREE SANCTUMS</div><h2>三重架構。</h2><p class="lead">三個入口，三種使命；同一個問題，被放置在不同的光線之下。</p></div><div class="section-code">體系索引 / S-003</div></div>
+<section class="page" data-title="三大架構">
+<div class="section-head"><div><div class="eyebrow">02 / THREE PILLARS</div><h2>三大架構。</h2><p class="lead">三大架構共同支撐路瑟里昂基金會：保存、安放、重構。它們彼此制衡，也共同指向生命的未完成性。</p></div><div class="section-code">體系索引 / F-003</div></div>
 <div class="org-grid">
 <button class="org-card" data-detail="infirmary"><div class="org-symbol">✧</div><div class="en">I · PRESERVATION</div><div class="cn">大醫院域</div><p>保存生命，使崩解暫停。</p></button>
 <button class="org-card" data-detail="sanctuary"><div class="org-symbol">◌</div><div class="en">II · CONTAINMENT</div><div class="cn">靜聖所</div><p>安放痛苦，讓失序被容納。</p></button>
@@ -306,7 +396,7 @@ h3 { font-size:calc(20px * var(--site-heading-scale)); line-height:1.6; margin-b
 <div class="detail-box" id="detail-infirmary"><h3>Lucerion Grand Infirmary / 大醫院域</h3><p>最接近外界的入口。疾病、損傷與退化在此被接收，生命被穩定，功能被修復。多數人只會認識這一層，並相信自己已經看見 Lucerion 的全部。</p></div>
 <div class="detail-box" id="detail-sanctuary"><h3>The Lucerion Sanctuaries / 靜聖所</h3><p>為無法被藥物單獨處理的部分留出空間：哀傷、依附、恐懼、記憶與失落。這裡不要求信仰一致；只要求人留下來，直到痛苦能被命名，或直到它不再需要名字。</p></div>
 <div class="detail-box" id="detail-eden"><h3>E.D.E.N / 深層生命研究與培育系統</h3><p>不再只問如何治療，而是追問生命還能被改寫到什麼程度。生理、神經、感知與人格的連續性在此交會。E.D.E.N 並不承諾所有答案都會被找到；它只是不接受問題應當就此停止。</p></div>
-<div class="tabs-foot"><span>選擇任一聖域，展開其卷宗</span><div class="page-controls"><button data-prev="">← 上一頁</button><span class="page-count">03 / 07</span><button data-next="">下一頁 →</button></div></div>
+<div class="tabs-foot"><span>選擇任一架構，展開其卷宗</span><div class="page-controls"><button data-prev="">← 上一頁</button><span class="page-count">03 / 07</span><button data-next="">下一頁 →</button></div></div>
 </section>
 <section class="page" data-title="組織脈絡">
 <div class="section-head"><div><div class="eyebrow">03 / ORDER &amp; HIERARCHY</div><h2>秩序的形狀。</h2><p class="lead">Lucerion 不以傳統部門構成自身，而以不同的生命職能彼此嵌合。每個節點只持有部分答案。</p></div><div class="section-code">架構圖 / O-004</div></div>
